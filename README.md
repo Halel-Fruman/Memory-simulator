@@ -28,27 +28,23 @@ The `sim_mem` class is responsible for simulating memory management. It includes
 
 To compile the project, use the provided `makefile`. Simply run the following command in the terminal:
 
-\`\`\`sh
+```sh
 make
-\`\`\`
+```
 
-This will compile the project and produce an executable named `Ex4`.
+This will compile the project and produce an executable named `Memory_Simulator`.
 
 ## How to Run
 
 After compiling, run the executable with the following command:
 
-\`\`\`sh
-./Ex4
-\`\`\`
+```sh
+./Memory_Simulator
+```
 
 This will execute the main program which demonstrates the memory management simulation.
 
-## Example Usage
-
-Here is an example usage of the `sim_mem` class in `main.cpp`:
-
-\`\`\`cpp
+```cpp
 int main() {
     sim_mem s((char*)"exec_file",(char*)"swap_file",128,128,64,64,64);
     s.store(1024,'*');
@@ -63,7 +59,9 @@ int main() {
     s.print_memory();
     return 0;
 }
-\`\`\`
+```
+
+
 
 
 

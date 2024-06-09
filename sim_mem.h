@@ -33,13 +33,13 @@ private:
 
     int binaryToDecimal(int binary[], int size);
 
-    void storeMain(int pageType, int pageNumber, int o);
+    void writeToMainMemory(int pageType, int pageNumber, int o);
 
-    int findF();
+    int findFreeFrame();
 
-    void storeSwap(int pageType, int pageNumber, int f);
+    void writeToSwapFile(int pageType, int pageNumber, int f);
 
-    int findS();
+    int getNextFreeSwapFrame();
 
     void clearSwapFrame(int pageType, int pageNumber, int swap);
 

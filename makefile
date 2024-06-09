@@ -5,7 +5,7 @@ CC = g++
 CFLAGS = -std=c++11 -Wall
 
 # Executable name
-EXECUTABLE = sim_mem
+EXECUTABLE = Memory_Simulator
 
 # Main program
 MAIN = main.cpp

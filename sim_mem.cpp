@@ -148,7 +148,7 @@ char sim_mem::load(int address)
         // if the requested page is not in the main memory
         if (memT == 0)
         {
-            writeToMainMemory(memT, pageN, offs);
+            writeToMainMemory(memT, pageN);
         }
         else if (page_table[memT][pageN].dirty)
         {
@@ -167,7 +167,7 @@ char sim_mem::load(int address)
         }
         else
         {
-            writeToMainMemory(memT, pageN, offs);
+            writeToMainMemory(memT, pageN);
         }
 
         int memoryFrame = page_table[memT][pageN].frame;
@@ -246,7 +246,7 @@ void sim_mem::store(int address, char value)
             else
             {
                 // Otherwise, load the page from the executable file
-                writeToMainMemory(memT, pageN, offs);
+                writeToMainMemory(memT, pageN);
             }
 
             int memoryFrame = page_table[memT][pageN].frame;
@@ -440,7 +440,7 @@ int sim_mem::findFreeFrame()
  * @param pageNumber    The number of the page.
  * @param o             The offset.
  */
-void sim_mem::writeToMainMemory(int pageType, int pageNumber, int o)
+void sim_mem::writeToMainMemory(int pageType, int pageNumber)
 {
     int type = pageType == 0 ? 0 : pageType == 1 ? text_size
                                                  : text_size + data_size;
@@ -553,7 +553,7 @@ int *sim_mem::oldestPage()
     int *idx = new int[2];
     idx[0] = 0;
     idx[1] = 0;
-    int size = 0;
+    int size;
     for (int i = 0; i < 4; ++i)
     {
         if (i == 0)

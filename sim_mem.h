@@ -2,7 +2,8 @@
 #define EX4_SIM_MEM_H
 #define MEMORY_SIZE 200
 extern char main_memory[MEMORY_SIZE];
-typedef struct page_descriptor {
+typedef struct page_descriptor
+{
     bool valid;
     int frame;
     bool dirty;
@@ -10,21 +11,22 @@ typedef struct page_descriptor {
     int time;
 } page_descriptor;
 
-class sim_mem {
-    int swapfile_fd; //swap file fd
-    int program_fd; //executable file fd
-    int text_size;//size of the text part
-    int data_size;//size of the data part
-    int bss_size;//size of the bss part
-    int heap_stack_size;//size of the heap stack part
-    int num_of_pages;//the total number of pages
-    int page_size;//size of each page
-    int num_of_txt_pages;//the number of text pages
-    int num_of_data_pages;//the number of data pages
-    int num_of_bss_pages;//the number of bss pages
-    int num_of_stack_heap_pages;//the number of heap stack pages
-    page_descriptor **page_table; //pointer to page table
-    bool* frames;
+class sim_mem
+{
+    int swapfile_fd;              // swap file fd
+    int program_fd;               // executable file fd
+    int text_size;                // size of the text part
+    int data_size;                // size of the data part
+    int bss_size;                 // size of the bss part
+    int heap_stack_size;          // size of the heap stack part
+    int num_of_pages;             // the total number of pages
+    int page_size;                // size of each page
+    int num_of_txt_pages;         // the number of text pages
+    int num_of_data_pages;        // the number of data pages
+    int num_of_bss_pages;         // the number of bss pages
+    int num_of_stack_heap_pages;  // the number of heap stack pages
+    page_descriptor **page_table; // pointer to page table
+    bool *frames;
 
 private:
     void decimalToBinary(int decimal, int ad[]);
@@ -33,7 +35,7 @@ private:
 
     int binaryToDecimal(int binary[], int size);
 
-    void writeToMainMemory(int pageType, int pageNumber, int o);
+    void writeToMainMemory(int pageType, int pageNumber);
 
     int findFreeFrame();
 
@@ -42,8 +44,6 @@ private:
     int getNextFreeSwapFrame();
 
     void clearSwapFrame(int pageType, int pageNumber, int swap);
-
-    void loadFromSwap();
 
     int *oldestPage();
 
@@ -64,8 +64,7 @@ public:
 
     void print_page_table();
 
-
-#endif //EX4_SIM_MEM_H
+#endif // EX4_SIM_MEM_H
 
     bool legalAddres(int address, int memoryType);
 };
